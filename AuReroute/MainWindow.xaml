@@ -1,0 +1,54 @@
+﻿<Window x:Class="AuReroute.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AuReroute" xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="AuReroute" Height="450" Width="800"
+        Icon="{DynamicResource icon}" WindowStyle="ToolWindow">
+    
+    <Window.Resources>
+        <Storyboard x:Key="FadeInStoryboard">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                         From="0" To="1" Duration="0:0:0.2" />
+        </Storyboard>
+        <Storyboard x:Key="FadeOutStoryboard">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                         From="1" To="0" Duration="0:0:0.2" />
+        </Storyboard>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF00013A" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#3FCE00FF" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Button x:Name="Button_AddRoute"  Content="New route" Width="80" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,10" Click="Button_AddRoute_Click"/>
+        </Border>        
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">            
+            <WrapPanel x:Name="Panel_Routes" Margin="10,10,10,10">
+                <Behaviors:Interaction.Behaviors>
+                    <Behaviors:FluidMoveBehavior Duration="0:0:0.2" AppliesTo="Children">
+                        <Behaviors:FluidMoveBehavior.EaseX>
+                            <SineEase EasingMode="EaseOut"/>
+                        </Behaviors:FluidMoveBehavior.EaseX>
+                        <Behaviors:FluidMoveBehavior.EaseY>
+                            <SineEase EasingMode="EaseOut"/>
+                        </Behaviors:FluidMoveBehavior.EaseY>
+                    </Behaviors:FluidMoveBehavior>
+                </Behaviors:Interaction.Behaviors>
+            </WrapPanel>            
+        </ScrollViewer>
+    </Grid>
+    
+</Window>
