@@ -1,3 +1,4 @@
+![logo](/Media/icon.png)
 ## AuReroute
 
 Created to manage audio output when using multiple devices on windows without installing any drivers. It works by capturing loopback and playing it on another devices.
